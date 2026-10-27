@@ -1,33 +1,352 @@
-<!-- ... existing code ... -->
-    <!-- HERO HEADER SECTION -->
-    <header class="text-center my-6 w-full animate-float">
-<!-- ... existing code ... -->
-        <!-- AUDIO PLAYER CONTROLS -->
-        <div class="fixed top-4 right-4 z-50">
-            <button id="audio-toggle" class="glass-panel text-sakura hover:text-white p-3 rounded-full flex items-center justify-center space-x-2 shadow-lg transition-all transform hover:scale-110">
-                <i id="audio-icon" class="fas fa-play text-lg"></i>
-                <span id="audio-status" class="text-xs font-semibold pr-1">Музыка OFF</span>
-            </button>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днём Рождения, Юлия! 🌸</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background: #0d0714;
+            color: #e2d9f3;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        #sakura-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(26, 16, 43, 0.7);
+            border: 1px solid #7c3aed;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #ec4899;
+            text-shadow: 0 0 12px #ec4899, 0 0 25px #8b5cf6;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #a78bfa;
+        }
+
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(124, 58, 237, 0.8);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.6);
+            backdrop-filter: blur(5px);
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.05);
+            background: #7c3aed;
+        }
+
+        .section-card {
+            background: rgba(22, 13, 36, 0.85);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #f472b6;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px dashed rgba(244, 114, 182, 0.3);
+            padding-bottom: 8px;
+        }
+
+        /* Именная Печенька */
+        .cookie-box {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .cookie {
+            font-size: 4rem;
+            cursor: pointer;
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 0 10px rgba(234, 179, 8, 0.5));
+        }
+
+        .cookie:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .cookie-paper {
+            background: #fef08a;
+            color: #854d0e;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: bold;
+            display: none;
+            box-shadow: 0 0 15px rgba(254, 240, 138, 0.4);
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Билет в путешествие */
+        .ticket {
+            background: linear-gradient(135deg, #312e81 0%, #4c1d95 100%);
+            border: 2px dashed #a78bfa;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .ticket-info h3 {
+            color: #fb7185;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .ticket-btn {
+            background: #ec4899;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .ticket-btn:hover {
+            background: #db2777;
+        }
+
+        /* Топ персонажей */
+        .top-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .char-card {
+            background: rgba(46, 16, 101, 0.4);
+            border: 1px solid #6d28d9;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .char-card h4 {
+            color: #c084fc;
+            margin-bottom: 5px;
+        }
+
+        .char-card p {
+            font-size: 0.9rem;
+            color: #ddd6fe;
+        }
+
+        /* Мемы */
+        .meme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .meme-card {
+            background: #1e1b4b;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #4338ca;
+        }
+
+        .meme-card div.meme-img-placeholder {
+            background: #312e81;
+            padding: 20px 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #f472b6;
+            margin-bottom: 8px;
+        }
+
+        .meme-caption {
+            font-size: 0.85rem;
+            color: #c7d2fe;
+        }
+
+        /* Пожелания / Чёрный юмор */
+        .joke-btn {
+            background: linear-gradient(90deg, #8b5cf6, #ec4899);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+        }
+
+        .joke-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0,0,0,0.4);
+            border-left: 4px solid #ec4899;
+            border-radius: 4px;
+            display: none;
+            font-style: italic;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="sakura-canvas"></canvas>
+
+    <button class="music-btn" id="musicToggle" onclick="toggleMusic()">🔊 Музыка OFF</button>
+
+    <div class="container">
+        
+        <!-- Шапка -->
+        <div class="header">
+            <h1>🌸 С Днём Рождения, Юлия! 🌸</h1>
+            <p class="subtitle">Уютный, неоновый и мемный уголок, созданный специально для тебя ✨</p>
         </div>
 
-        <!-- HERO HEADER SECTION -->
-<!-- ... existing code ... -->
-        <!-- FOOTER -->
-        <footer class="w-full text-center py-6 text-xs text-slate-500">
-            <p class="mb-1">Создано специально для Юлии 🌸 | 2026</p>
-            <p class="text-[10px] opacity-60">Discord Squad • MLBB Team • Roblox • Brawl Stars • Anime Lovers</p>
-        </footer>
+        <!-- Именное Печенье -->
+        <div class="section-card">
+            <div class="section-title">🥠 Ручная Работа: Именная Печенька</div>
+            <div class="cookie-box">
+                <p style="margin-bottom: 15px; color: #a78bfa;">Нажми на печеньку, чтобы разломить её и прочитать предсказание!</p>
+                <div class="cookie" onclick="breakCookie()">🥠</div>
+                <div class="cookie-paper" id="cookiePaper">
+                    ✨ «Печенька для ЮЛИИ: Впереди тебя ждёт крутейшее путешествие, куча побед в MLBB и SSS-ранг во всём!» ✨
+                </div>
+            </div>
+        </div>
+
+        <!-- Путешествие -->
+        <div class="section-card">
+            <div class="section-title">✈️ Подарочный Сертификат на Путешествие</div>
+            <div class="ticket">
+                <div class="ticket-info">
+                    <h3>Билет в Любую Точку Мира 🌍</h3>
+                    <p style="font-size: 0.9rem; color: #c7d2fe;">Пассажир: Юлия | Класс: Безграничный | Рейс: Мечты</p>
+                </div>
+                <button class="ticket-btn" onclick="alert('Активировано! Упаковывай чемоданы и готовится к крутому трипу! 🧳✨')">Активировать Билет</button>
+            </div>
+        </div>
+
+        <!-- Топ Персонажей -->
+        <div class="section-card">
+            <div class="section-title">👑 Топ Любимых Персонажей</div>
+            <div class="top-grid">
+                <div class="char-card">
+                    <h4>1. Мисато Кацураги</h4>
+                    <p><i>Evangelion</i></p>
+                    <p style="margin-top: 8px; font-size: 0.8rem; color: #a78bfa;">«Главный пивной эстетик и лучший оперативный командующий!»</p>
+                </div>
+                <div class="char-card">
+                    <h4>2. Селена & Эстес</h4>
+                    <p><i>Mobile Legends: Bang Bang</i></p>
+                    <p style="margin-top: 8px; font-size: 0.8rem; color: #a78bfa;">«Идеальный саппорт и разрывной каст в кастомках!»</p>
+                </div>
+                <div class="char-card">
+                    <h4>3. Данте & Вергилий</h4>
+                    <p><i>Devil May Cry</i></p>
+                    <p style="margin-top: 8px; font-size: 0.8rem; color: #a78bfa;">«Максимальный стильный SSS-ранг и Motivation!»</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Мемы -->
+        <div class="section-card">
+            <div class="section-title">😼 Любимая Зала Мемов</div>
+            <div class="meme-grid">
+                <div class="meme-card">
+                    <div class="meme-img-placeholder">🐱 я балбесик бебебе</div>
+                    <div class="meme-caption">Когда с утра пытаешься собраться с мыслями</div>
+                </div>
+                <div class="meme-card">
+                    <div class="meme-img-placeholder">🏎️ Каркас безопасности</div>
+                    <div class="meme-caption">«Это могли быть мы... но у меня каркас»</div>
+                </div>
+                <div class="meme-card">
+                    <div class="meme-img-placeholder">🚗 Б***Ь Я ВТОРОЙ</div>
+                    <div class="meme-caption">Когда слил катку на 0.1 секунды</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Генератор шуток / Чёрный юмор -->
+        <div class="section-card">
+            <div class="section-title">🔥 Уголок Чёрного & Пошлого Юмора</div>
+            <p style="font-size: 0.9rem; color: #a78bfa; margin-bottom: 10px;">Нажми на кнопку, чтобы получить порцию специфического юморка:</p>
+            <button class="joke-btn" onclick="getJoke()">Получить шутку 😈</button>
+            <div class="joke-box" id="jokeBox"></div>
+        </div>
 
     </div>
 
-    <!-- JS SCRIPTS & LOGIC -->
     <script>
-        /* ----------------------------------------------------
-           1. SAKURA & STAR PARTICLES CANVAS
-        ---------------------------------------------------- */
+        // Инициализация Canvas лепестков сакуры
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('sakura-canvas');
-            if (!canvas) return;
             const ctx = canvas.getContext('2d');
 
             function resizeCanvas() {
@@ -37,188 +356,112 @@
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
 
-            const particles = [];
-            const particleCount = 40;
-
-            class Particle {
-                constructor() {
-                    this.reset();
-                }
-
-                reset() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = -20;
-                    this.size = Math.random() * 8 + 4;
-                    this.speedY = Math.random() * 1.5 + 0.8;
-                    this.speedX = Math.random() * 1 - 0.5;
-                    this.rotation = Math.random() * 360;
-                    this.rotationSpeed = Math.random() * 2 - 1;
-                    this.opacity = Math.random() * 0.7 + 0.3;
-                    this.color = Math.random() > 0.3 ? '#ffb7c5' : '#8a2be2';
-                }
-
-                update() {
-                    this.y += this.speedY;
-                    this.x += this.speedX + Math.sin(this.y / 30) * 0.5;
-                    this.rotation += this.rotationSpeed;
-
-                    if (this.y > canvas.height + 20) {
-                        this.reset();
-                    }
-                }
-
-                draw() {
-                    ctx.save();
-                    ctx.translate(this.x, this.y);
-                    ctx.rotate((this.rotation * Math.PI) / 180);
-                    ctx.globalAlpha = this.opacity;
-                    ctx.fillStyle = this.color;
-
-                    // Draw petal shape
-                    ctx.beginPath();
-                    ctx.moveTo(0, 0);
-                    ctx.bezierCurveTo(-this.size, -this.size / 2, -this.size, this.size, 0, this.size * 1.5);
-                    ctx.bezierCurveTo(this.size, this.size, this.size, -this.size / 2, 0, 0);
-                    ctx.fill();
-
-                    ctx.restore();
-                }
-            }
-
-            for (let i = 0; i < particleCount; i++) {
-                const p = new Particle();
-                p.y = Math.random() * canvas.height; // scatter initially
-                particles.push(p);
-            }
-
-            function animateParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => {
-                    p.update();
-                    p.draw();
+            const petals = [];
+            for (let i = 0; i < 35; i++) {
+                petals.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 7 + 4,
+                    speedY: Math.random() * 1.5 + 0.8,
+                    speedX: Math.random() * 1 - 0.5,
+                    angle: Math.random() * 360
                 });
-                requestAnimationFrame(animateParticles);
             }
 
-            animateParticles();
+            function animatePetals() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'rgba(244, 114, 182, 0.6)';
+
+                petals.forEach(p => {
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.angle * Math.PI / 180);
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, p.size, p.size / 2, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.angle += 1;
+
+                    if (p.y > canvas.height) {
+                        p.y = -10;
+                        p.x = Math.random() * canvas.width;
+                    }
+                });
+
+                requestAnimationFrame(animatePetals);
+            }
+            animatePetals();
         });
 
-        /* ----------------------------------------------------
-           2. WEB AUDIO API SYNTHESIZER (LO-FI / AMBIENT CHORDS)
-        ---------------------------------------------------- */
-        class LofiSynthesizer {
-            constructor() {
-                this.ctx = null;
-                this.isPlaying = false;
-                this.timer = null;
-                this.step = 0;
-                
-                // Dreamy chord progression (Fmaj7 -> Em7 -> Dm7 -> Cmaj7 / Am)
-                this.chords = [
-                    [174.61, 220.00, 261.63, 329.63], // Fmaj7 (F3, A3, C4, E4)
-                    [164.81, 196.00, 246.94, 293.66], // Em7   (E3, G3, B3, D4)
-                    [146.83, 174.61, 220.00, 261.63], // Dm7   (D3, F3, A3, C4)
-                    [130.81, 164.81, 196.00, 246.94]  // Cmaj7 (C3, E3, G3, B3)
-                ];
-                
-                // Gentle pentatonic melody notes for cozy vibe
-                this.melodyNotes = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
-            }
+        // Печенька
+        function breakCookie() {
+            const paper = document.getElementById('cookiePaper');
+            paper.style.display = 'block';
+        }
 
-            init() {
-                if (!this.ctx) {
-                    const AudioContext = window.AudioContext || window.webkitAudioContext;
-                    this.ctx = new AudioContext();
+        // Генератор шуток
+        const jokes = [
+            "Почему у саппортов в MLBB нет личной жизни? Потому что они привыкли вытаскивать всех из дерьма бесплатно.",
+            "Ты как Вергилий — приходишь, забираешь всю мотивацию и оставляешь меня в шоке.",
+            "Чёрный юмор как ноги — у кого-то есть, а у кого-то нету.",
+            "Секрет идеальных отношений: каркас безопасности в машине и отсутствие AFK в катках!"
+        ];
+
+        function getJoke() {
+            const box = document.getElementById('jokeBox');
+            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            box.innerText = randomJoke;
+            box.style.display = 'block';
+        }
+
+        // Web Audio API Синтезатор Музыки
+        let audioCtx = null;
+        let isPlaying = false;
+        let intervalId = null;
+
+        function toggleMusic() {
+            const btn = document.getElementById('musicToggle');
+            if (!isPlaying) {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 }
-                if (this.ctx.state === 'suspended') {
-                    this.ctx.resume();
-                }
-            }
-
-            playTone(freq, type = 'sine', duration = 1.5, gainVal = 0.08, attack = 0.1, decay = 0.5) {
-                if (!this.ctx) return;
-                
-                const osc = this.ctx.createOscillator();
-                const gain = this.ctx.createGain();
-
-                osc.type = type;
-                osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-
-                // Smooth envelope to sound soft & aesthetic
-                const now = this.ctx.currentTime;
-                gain.gain.setValueAtTime(0, now);
-                gain.gain.linearRampToValueAtTime(gainVal, now + attack);
-                gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
-
-                osc.connect(gain);
-                gain.connect(this.ctx.destination);
-
-                osc.start(now);
-                osc.stop(now + duration);
-            }
-
-            start() {
-                this.init();
-                this.isPlaying = true;
-                this.step = 0;
-
-                // Loop musical sequence
-                const playStep = () => {
-                    if (!this.isPlaying) return;
-
-                    // Play ambient chord pads
-                    const chord = this.chords[this.step % this.chords.length];
-                    chord.forEach(freq => {
-                        this.playTone(freq, 'triangle', 3.5, 0.04, 0.4, 2.0);
-                    });
-
-                    // Random atmospheric melody note
-                    if (Math.random() > 0.3) {
-                        const note = this.melodyNotes[Math.floor(Math.random() * this.melodyNotes.length)];
-                        setTimeout(() => {
-                            if (this.isPlaying) {
-                                this.playTone(note, 'sine', 1.8, 0.05, 0.05, 1.2);
-                            }
-                        }, Math.random() * 800);
-                    }
-
-                    this.step++;
-                    this.timer = setTimeout(playStep, 2400); // tempo pace
-                };
-
-                playStep();
-            }
-
-            stop() {
-                this.isPlaying = false;
-                if (this.timer) clearTimeout(this.timer);
+                isPlaying = true;
+                btn.innerText = "⏸️ Музыка ON";
+                playLofiTrack();
+            } else {
+                isPlaying = false;
+                btn.innerText = "🔊 Музыка OFF";
+                if (intervalId) clearInterval(intervalId);
             }
         }
 
-        const audioSynth = new LofiSynthesizer();
+        function playLofiTrack() {
+            const notes = [261.63, 329.63, 392.00, 523.25, 440.00, 349.23];
+            let step = 0;
 
-        /* ----------------------------------------------------
-           3. GACHA SYSTEM DATA & LOGIC
-        ---------------------------------------------------- */
-// ... existing code ...
-        /* ----------------------------------------------------
-           4. AUDIO TOGGLE LOGIC
-        ---------------------------------------------------- */
-        const audioBtn = document.getElementById('audio-toggle');
-        const audioIcon = document.getElementById('audio-icon');
-        const audioStatus = document.getElementById('audio-status');
+            intervalId = setInterval(() => {
+                if (!isPlaying) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
 
-        audioBtn.addEventListener('click', () => {
-            if (!audioSynth.isPlaying) {
-                audioSynth.start();
-                audioIcon.className = "fas fa-pause text-lg text-sakura animate-pulse";
-                audioStatus.textContent = "Музыка ON";
-            } else {
-                audioSynth.stop();
-                audioIcon.className = "fas fa-play text-lg";
-                audioStatus.textContent = "Музыка OFF";
-            }
-        });
+                osc.type = 'sine';
+                osc.frequency.value = notes[step % notes.length];
+
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.8);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.8);
+
+                step++;
+            }, 500);
+        }
     </script>
 </body>
 </html>
