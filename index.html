@@ -36,13 +36,13 @@
         .char-card p { font-size: 0.95rem; color: #ddd6fe; }
 
         /* Листаемая галерея мемов */
-        .slider-container { position: relative; max-width: 500px; margin: 0 auto; text-align: center; }
+        .slider-container { position: relative; max-width: 550px; margin: 0 auto; text-align: center; }
         .slide { display: none; background: #1e1b4b; border-radius: 16px; padding: 15px; border: 1px solid #4338ca; }
         .slide.active { display: block; animation: fadeIn 0.5s ease; }
-        .meme-img { width: 100%; height: 320px; object-fit: contain; border-radius: 10px; margin-bottom: 12px; background: #000; }
-        .meme-caption { font-size: 1rem; color: #c7d2fe; font-weight: 600; }
-        .slider-btns { display: flex; justify-content: space-between; position: absolute; top: 50%; width: 100%; transform: translateY(-50%); padding: 0 -20px; pointer-events: none; }
-        .slider-btn { background: rgba(124, 58, 237, 0.8); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 1.2rem; pointer-events: auto; transition: background 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+        .meme-img { width: 100%; height: 350px; object-fit: contain; border-radius: 10px; margin-bottom: 12px; background: #000; }
+        .meme-caption { font-size: 1.05rem; color: #c7d2fe; font-weight: 600; }
+        .slider-btns { display: flex; justify-content: space-between; position: absolute; top: 45%; width: 100%; transform: translateY(-50%); padding: 0 -20px; pointer-events: none; }
+        .slider-btn { background: rgba(124, 58, 237, 0.9); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 1.3rem; pointer-events: auto; transition: background 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 12px rgba(0,0,0,0.6); }
         .slider-btn:hover { background: #ec4899; }
 
         .gift-box { text-align: center; padding: 10px; }
@@ -104,7 +104,7 @@
             </div>
         </div>
 
-        <!-- Топ Персонажей с вашими точными картинками -->
+        <!-- Топ Персонажей -->
         <div class="section-card">
             <div class="section-title">👑 Топ Любимых Персонажей</div>
             <div class="top-grid">
@@ -129,7 +129,7 @@
             </div>
         </div>
 
-        <!-- Листаемые Мемы -->
+        <!-- Листаемые Мемы (Все картинки добавлены) -->
         <div class="section-card">
             <div class="section-title">😼 Уголок Фирменных Мемов (Литай стрелочками)</div>
             <div class="slider-container">
@@ -145,6 +145,27 @@
                     <img src="42062.jpg" alt="Бля я второй" class="meme-img">
                     <div class="meme-caption">«Б***Ь Я ВТОРОЙ» 🚗💨</div>
                 </div>
+                <div class="slide">
+                    <img src="42245.jpg" alt="Мармеладки не кислые" class="meme-img">
+                    <div class="meme-caption">«Мармеладки не кислые, честно» 🐱</div>
+                </div>
+                <div class="slide">
+                    <img src="42248.jpg" alt="Бля" class="meme-img">
+                    <div class="meme-caption">«Бля» 🗿</div>
+                </div>
+                <div class="slide">
+                    <img src="42243.jpg" alt="Уззззз" class="meme-img">
+                    <div class="meme-caption">«Уззззззззззз» 😼</div>
+                </div>
+                <div class="slide">
+                    <img src="42244.jpg" alt="Умный кот" class="meme-img">
+                    <div class="meme-caption">«Видно глаза умные, он гений» 🧠🐈</div>
+                </div>
+                <div class="slide">
+                    <img src="42249.jpg" alt="Декстер подкат" class="meme-img">
+                    <div class="meme-caption">Привет (подкат) (намёк) (немношка заигрываю) 😏</div>
+                </div>
+
                 <div class="slider-btns">
                     <button class="slider-btn" onclick="changeSlide(-1)">❮</button>
                     <button class="slider-btn" onclick="changeSlide(1)">❯</button>
@@ -152,7 +173,7 @@
             </div>
         </div>
 
-        <!-- 2. Секретное послание с вашим текстом -->
+        <!-- 2. Секретное послание -->
         <div class="section-card">
             <div class="section-title">🎁 Секретное Послание</div>
             <div class="gift-box">
@@ -166,7 +187,7 @@
             </div>
         </div>
 
-        <!-- 3. Больше пошлых и чёрных шуток -->
+        <!-- 3. Пошлые и чёрные шутки -->
         <div class="section-card">
             <div class="section-title">🔥 Уголок Чёрного & Пошлого Юмора</div>
             <p style="font-size: 0.95rem; color: #a78bfa; margin-bottom: 15px;">Нажми на кнопку, чтобы поржать от души:</p>
