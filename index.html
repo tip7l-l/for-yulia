@@ -6,54 +6,53 @@
     <title>С Днём Рождения, Юлия! 🌸</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
-        body { background: #0d0714; color: #e2d9f3; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; min-height: 100vh; padding-bottom: 60px; }
+        body { background: #0d0714; color: #e2d9f3; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow-x: hidden; min-height: 100vh; padding-bottom: 80px; }
         #sakura-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .container { max-width: 850px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
-        .header { text-align: center; padding: 40px 20px; background: rgba(26, 16, 43, 0.85); border: 1px solid #7c3aed; border-radius: 20px; box-shadow: 0 0 25px rgba(124, 58, 237, 0.4); backdrop-filter: blur(10px); margin-bottom: 30px; }
-        .header h1 { font-size: 2.3rem; color: #ec4899; text-shadow: 0 0 12px #ec4899, 0 0 25px #8b5cf6; margin-bottom: 10px; }
-        .subtitle { font-size: 1.1rem; color: #a78bfa; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; position: relative; z-index: 2; }
+        .header { text-align: center; padding: 50px 20px; background: rgba(26, 16, 43, 0.9); border: 1px solid #7c3aed; border-radius: 24px; box-shadow: 0 0 30px rgba(124, 58, 237, 0.5); backdrop-filter: blur(10px); margin-bottom: 35px; }
+        .header h1 { font-size: 2.5rem; color: #ec4899; text-shadow: 0 0 15px #ec4899, 0 0 30px #8b5cf6; margin-bottom: 12px; }
+        .subtitle { font-size: 1.15rem; color: #a78bfa; }
         .music-btn { position: fixed; top: 20px; right: 20px; z-index: 100; background: rgba(124, 58, 237, 0.9); color: white; border: none; padding: 10px 18px; border-radius: 30px; cursor: pointer; box-shadow: 0 0 15px rgba(124, 58, 237, 0.6); backdrop-filter: blur(5px); font-weight: bold; transition: all 0.3s; }
         .music-btn:hover { transform: scale(1.05); background: #7c3aed; }
-        .section-card { background: rgba(22, 13, 36, 0.9); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 16px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); backdrop-filter: blur(8px); }
-        .section-title { font-size: 1.4rem; color: #f472b6; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; border-bottom: 1px dashed rgba(244, 114, 182, 0.3); padding-bottom: 8px; }
+        .section-card { background: rgba(22, 13, 36, 0.92); border: 1px solid rgba(139, 92, 246, 0.4); border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 6px 25px rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
+        .section-title { font-size: 1.5rem; color: #f472b6; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px dashed rgba(244, 114, 182, 0.3); padding-bottom: 10px; }
         
-        /* Текст-поздравление */
-        .story-text { line-height: 1.6; color: #e2d9f3; margin-bottom: 15px; font-size: 1.02rem; }
+        .story-text { line-height: 1.7; color: #e2d9f3; margin-bottom: 15px; font-size: 1.08rem; }
 
-        /* Именная Печенька */
         .cookie-box { text-align: center; padding: 10px; }
-        .cookie { font-size: 4rem; cursor: pointer; display: inline-block; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: drop-shadow(0 0 10px rgba(234, 179, 8, 0.5)); }
-        .cookie:hover { transform: scale(1.2) rotate(10deg); }
-        .cookie-paper { background: #fef08a; color: #854d0e; padding: 15px 20px; border-radius: 8px; margin-top: 15px; font-weight: bold; display: none; box-shadow: 0 0 15px rgba(254, 240, 138, 0.4); animation: fadeIn 0.5s ease; }
+        .cookie { font-size: 4.5rem; cursor: pointer; display: inline-block; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); filter: drop-shadow(0 0 12px rgba(234, 179, 8, 0.6)); }
+        .cookie:hover { transform: scale(1.25) rotate(10deg); }
+        .cookie-paper { background: #fef08a; color: #854d0e; padding: 18px 22px; border-radius: 12px; margin-top: 20px; font-weight: bold; display: none; box-shadow: 0 0 20px rgba(254, 240, 138, 0.5); animation: fadeIn 0.5s ease; font-size: 1.05rem; line-height: 1.5; }
 
-        /* Билет в путешествие */
-        .ticket { background: linear-gradient(135deg, #312e81 0%, #4c1d95 100%); border: 2px dashed #a78bfa; border-radius: 12px; padding: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .ticket-info h3 { color: #fb7185; font-size: 1.2rem; margin-bottom: 5px; }
-        .ticket-btn { background: #ec4899; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
-        .ticket-btn:hover { background: #db2777; }
+        .ticket { background: linear-gradient(135deg, #312e81 0%, #4c1d95 100%); border: 2px dashed #a78bfa; border-radius: 16px; padding: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .ticket-info h3 { color: #fb7185; font-size: 1.3rem; margin-bottom: 8px; }
+        .ticket-btn { background: #ec4899; color: white; border: none; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-weight: bold; transition: background 0.3s, transform 0.2s; }
+        .ticket-btn:hover { background: #db2777; transform: scale(1.05); }
 
-        /* Топ персонажей с картинками */
-        .top-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-top: 15px; }
-        .char-card { background: rgba(46, 16, 101, 0.5); border: 1px solid #6d28d9; border-radius: 12px; padding: 15px; text-align: center; }
-        .char-img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; border: 1px solid #8b5cf6; }
-        .char-card h4 { color: #c084fc; margin-bottom: 5px; font-size: 1.1rem; }
-        .char-card p { font-size: 0.9rem; color: #ddd6fe; }
+        .top-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 15px; }
+        .char-card { background: rgba(46, 16, 101, 0.5); border: 1px solid #6d28d9; border-radius: 16px; padding: 18px; text-align: center; }
+        .char-img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; margin-bottom: 12px; border: 1px solid #8b5cf6; }
+        .char-card h4 { color: #c084fc; margin-bottom: 5px; font-size: 1.2rem; }
+        .char-card p { font-size: 0.95rem; color: #ddd6fe; }
 
-        /* Мемы с картинками */
-        .meme-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-        .meme-card { background: #1e1b4b; border-radius: 10px; padding: 12px; text-align: center; border: 1px solid #4338ca; }
-        .meme-img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
-        .meme-caption { font-size: 0.85rem; color: #c7d2fe; font-weight: 500; }
+        /* Листаемая галерея мемов */
+        .slider-container { position: relative; max-width: 500px; margin: 0 auto; text-align: center; }
+        .slide { display: none; background: #1e1b4b; border-radius: 16px; padding: 15px; border: 1px solid #4338ca; }
+        .slide.active { display: block; animation: fadeIn 0.5s ease; }
+        .meme-img { width: 100%; height: 320px; object-fit: contain; border-radius: 10px; margin-bottom: 12px; background: #000; }
+        .meme-caption { font-size: 1rem; color: #c7d2fe; font-weight: 600; }
+        .slider-btns { display: flex; justify-content: space-between; position: absolute; top: 50%; width: 100%; transform: translateY(-50%); padding: 0 -20px; pointer-events: none; }
+        .slider-btn { background: rgba(124, 58, 237, 0.8); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-weight: bold; font-size: 1.2rem; pointer-events: auto; transition: background 0.3s; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+        .slider-btn:hover { background: #ec4899; }
 
-        /* Секретный подарок / поздравление */
-        .gift-box { text-align: center; padding: 15px; }
-        .gift-btn { background: linear-gradient(90deg, #ec4899, #8b5cf6); color: white; border: none; padding: 12px 25px; border-radius: 30px; font-size: 1rem; cursor: pointer; font-weight: bold; box-shadow: 0 0 15px rgba(236, 72, 153, 0.5); transition: transform 0.2s; }
+        .gift-box { text-align: center; padding: 10px; }
+        .gift-btn { background: linear-gradient(90deg, #ec4899, #8b5cf6); color: white; border: none; padding: 14px 30px; border-radius: 30px; font-size: 1.1rem; cursor: pointer; font-weight: bold; box-shadow: 0 0 20px rgba(236, 72, 153, 0.5); transition: transform 0.2s; }
         .gift-btn:hover { transform: scale(1.05); }
-        .secret-message { margin-top: 15px; padding: 20px; background: rgba(124, 58, 237, 0.2); border: 1px solid #ec4899; border-radius: 10px; display: none; line-height: 1.6; text-align: left; }
+        .secret-message { margin-top: 20px; padding: 25px; background: rgba(124, 58, 237, 0.25); border: 1px solid #ec4899; border-radius: 16px; display: none; line-height: 1.7; text-align: left; font-size: 1.05rem; }
 
-        /* Чёрный юмор */
-        .joke-btn { background: linear-gradient(90deg, #8b5cf6, #ec4899); color: white; border: none; padding: 12px 24px; border-radius: 30px; font-size: 1rem; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); }
-        .joke-box { margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.4); border-left: 4px solid #ec4899; border-radius: 4px; display: none; font-style: italic; }
+        .joke-btn { background: linear-gradient(90deg, #8b5cf6, #ec4899); color: white; border: none; padding: 14px 28px; border-radius: 30px; font-size: 1.05rem; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px; box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); transition: transform 0.2s; }
+        .joke-btn:hover { transform: scale(1.02); }
+        .joke-box { margin-top: 20px; padding: 18px; background: rgba(0,0,0,0.5); border-left: 5px solid #ec4899; border-radius: 8px; display: none; font-style: italic; font-size: 1.05rem; line-height: 1.5; color: #fbcfe8; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -71,21 +70,24 @@
             <p class="subtitle">Discord Squad • MLBB • Roblox & Brawl Stars • Аниме-эстетика ✨</p>
         </div>
 
-        <!-- Душевное поздравление и хроника -->
+        <!-- 1. Хроника дружбы -->
         <div class="section-card">
             <div class="section-title">✨ О нашей истории и тебе</div>
-            <p class="story-text">Всё началось на том самом сервере в Discord (где были Кошка Лана, Ульянка, Рейнбоу, Йошимурачи и Крошка Ева), а потом наша дружба плавно перекочевала в Telegram. И как же круто, что мы тогда сошлись!</p>
-            <p class="story-text">Мы столько всего прошли вместе: и совместные катки в MLBB, Brawl Stars, Roblox, и обсуждения любимых аниме (особенно <b>«Очень приятно, Бог»</b> и других шедевров). Ты невероятно крутой, весёлый и душевный человек. Пусть в твоей жизни будет максимум побед, классных вайбов и SSS-ранга во всём!</p>
+            <p class="story-text">А ведь всё началось на сервере <b>УЛЕЙ</b> (тогда). Со многими ребятами оттуда я уже не общаюсь, кроме тебя. Сколько же времени мы провели в ДС! Было столько всего прикольного: ролеплеи, создание собственных серверов и многое другое.</p>
+            <p class="story-text">Потом ДС заблокировали в РФ, и все мы перекочевали в ТГ. И вот мы продолжаем общаться уже 3–4 года!</p>
+            <p class="story-text">Мы столько всего прошли вместе: совместные катки в MLBB, раньше катали в Roblox, а иногда даже играли в Brawl Stars. Мы даже посмотрели вместе аниме «Очень приятно, Бог»! Обсуждали самые разные темы.</p>
+            <p class="story-text" style="color: #f472b6; font-weight: 500;">Ты невероятно крутой, весёлый и душевный человек. Пусть в твоей жизни будет много светлого, доброго и по-настоящему ценного, поменьше тильта и побольше всего самого наилучшего! И пусть тебе никогда не будет скучно!!</p>
         </div>
 
-        <!-- Именная Печенька -->
+        <!-- Именная Печенька с кучей пожеланий -->
         <div class="section-card">
             <div class="section-title">🥠 Ручная Работа: Именная Печенька</div>
             <div class="cookie-box">
                 <p style="margin-bottom: 15px; color: #a78bfa;">Юлия, нажми на печеньку, чтобы разломить её и узнать предсказание!</p>
                 <div class="cookie" onclick="breakCookie()">🥠</div>
                 <div class="cookie-paper" id="cookiePaper">
-                    ✨ «Специальная печенька для Юлии: ручная работа, сделанная с душой. Внутри запечатан успех во всех катках и поездка в то самое путешествие мечты!» ✨
+                    ✨ <b>Специальное печенье ручной работы для ЮЛИИ:</b><br><br>
+                    Желаю тебе бесконечного запаса нервов в катках, чтобы тильт обходил тебя стороной, а ранги росли со скоростью света! Пусть в жизни будет столько же драйва, сколько в лучших заездах, а на пути встречаются только крутые люди. Желаю железобетонного здоровья, кучу бабла, душевного уюта, реализации самых безумных идей и чтобы то самое путешествие мечты реализовалось как можно быстрее! Ты лучшая! 💖
                 </div>
             </div>
         </div>
@@ -96,73 +98,79 @@
             <div class="ticket">
                 <div class="ticket-info">
                     <h3>Билет в Любую Точку Мира 🌍</h3>
-                    <p style="font-size: 0.9rem; color: #c7d2fe;">Пассажир: Юлия | Класс: Безграничный | Направление: Куда душа пожелает</p>
+                    <p style="font-size: 0.95rem; color: #c7d2fe;">Пассажир: Юлия | Класс: Безграничный | Направление: Туда, где сбываются мечты</p>
                 </div>
-                <button class="ticket-btn" onclick="alert('Активировано! Чемоданы уже мысленно собраны, осталось полететь! 🧳✨')">Активировать Билет</button>
+                <button class="ticket-btn" onclick="alert('Активировано! Чемоданы мысленно собраны, билеты на руках, летим навстречу приключениям! 🧳✨')">Активировать Билет</button>
             </div>
         </div>
 
-        <!-- Топ Персонажей -->
+        <!-- Топ Персонажей с вашими точными картинками -->
         <div class="section-card">
             <div class="section-title">👑 Топ Любимых Персонажей</div>
             <div class="top-grid">
                 <div class="char-card">
-                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&q=80" alt="Misato" class="char-img">
+                    <img src="42250.jpg" alt="Misato Katsuragi" class="char-img">
                     <h4>1. Мисато Кацураги</h4>
                     <p><i>Evangelion</i></p>
-                    <p style="margin-top: 8px; font-size: 0.8rem; color: #a78bfa;">Главный пивной эстетик и гениальный тактик!</p>
+                    <p style="margin-top: 8px; font-size: 0.85rem; color: #a78bfa;">Главный пивной эстетик и гениальный тактик в камуфляже!</p>
                 </div>
                 <div class="char-card">
-                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&q=80" alt="MLBB" class="char-img">
+                    <img src="42251.jpg" alt="Selena & Estes" class="char-img">
                     <h4>2. Селена & Эстес</h4>
                     <p><i>Mobile Legends: Bang Bang</i></p>
-                    <p style="margin-top: 8px; font-size: 0.8rem; color: #a78bfa;">Невероятный саппорт и разрывной геймплей.</p>
+                    <p style="margin-top: 8px; font-size: 0.85rem; color: #a78bfa;">Идеальный дуэт, саппорт и разрывной геймплей.</p>
                 </div>
                 <div class="char-card">
-                    <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400&q=80" alt="DMC" class="char-img">
+                    <img src="42252.jpg" alt="Dante & Vergil" class="char-img">
                     <h4>3. Данте & Вергилий</h4>
                     <p><i>Devil May Cry</i></p>
-                    <p style="margin-top: 8px; font-size: 0.8rem; color: #a78bfa;">Стиль, харизма и абсолютная мотивация.</p>
+                    <p style="margin-top: 8px; font-size: 0.85rem; color: #a78bfa;">Стиль, харизма, безумие и абсолютная мотивация.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Мемы -->
+        <!-- Листаемые Мемы -->
         <div class="section-card">
-            <div class="section-title">😼 Уголок Фирменных Мемов</div>
-            <div class="meme-grid">
-                <div class="meme-card">
-                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&q=80" alt="Cat" class="meme-img">
+            <div class="section-title">😼 Уголок Фирменных Мемов (Литай стрелочками)</div>
+            <div class="slider-container">
+                <div class="slide active">
+                    <img src="42061.jpg" alt="Балбесик" class="meme-img">
                     <div class="meme-caption">«Я балбесик бебебе» 🐱</div>
                 </div>
-                <div class="meme-card">
-                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&q=80" alt="Car" class="meme-img">
+                <div class="slide">
+                    <img src="42060.jpg" alt="Каркас безопасности" class="meme-img">
                     <div class="meme-caption">«Это могли быть мы... но у меня каркас безопасности» 🏎️</div>
                 </div>
-                <div class="meme-card">
-                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=400&q=80" alt="NFS" class="meme-img">
+                <div class="slide">
+                    <img src="42062.jpg" alt="Бля я второй" class="meme-img">
                     <div class="meme-caption">«Б***Ь Я ВТОРОЙ» 🚗💨</div>
+                </div>
+                <div class="slider-btns">
+                    <button class="slider-btn" onclick="changeSlide(-1)">❮</button>
+                    <button class="slider-btn" onclick="changeSlide(1)">❯</button>
                 </div>
             </div>
         </div>
 
-        <!-- Секретный подарок -->
+        <!-- 2. Секретное послание с вашим текстом -->
         <div class="section-card">
             <div class="section-title">🎁 Секретное Послание</div>
             <div class="gift-box">
-                <button class="gift-btn" onclick="openGift()">Открыть подарок 🎀</button>
+                <button class="gift-btn" onclick="openGift()">Открыть поздравление 🎀</button>
                 <div class="secret-message" id="secretMessage">
-                    <h3 style="color: #f472b6; margin-bottom: 8px;">Юля, с днём рождения! 🎉</h3>
-                    <p>Огромное спасибо за теплую атмосферу, классные катки, бесконечные мемы и душевные разговоры. Оставайся всегда такой же классной, весёлой и неповторимой! Пусть все твои грандиозные планы (включая крутые путешествия) обязательно сбудутся. Обнимаю! ✨</p>
+                    <h3 style="color: #f472b6; margin-bottom: 12px;">Юля, с днём рождения! 🎉</h3>
+                    <p style="margin-bottom: 10px;">Большое спасибо за тёплые разговоры и за то, что ты всегда готова выслушать и поддержать. За то, что всегда готова поиграть и помочь решить проблемы. За то, что ты открыта к разговорам и готова разделить и горе, и радость.</p>
+                    <p style="margin-bottom: 10px;">Оставайся всегда такой же классной, открытой и замечательной! Пусть все твои грандиозные мечты, планы и цели сбудутся!</p>
+                    <p style="font-weight: bold; color: #f472b6;">Обнимаю ❤️</p>
                 </div>
             </div>
         </div>
 
-        <!-- Чёрный юмор -->
+        <!-- 3. Больше пошлых и чёрных шуток -->
         <div class="section-card">
             <div class="section-title">🔥 Уголок Чёрного & Пошлого Юмора</div>
-            <p style="font-size: 0.9rem; color: #a78bfa; margin-bottom: 10px;">Нажми на кнопку для порции особого юмора:</p>
-            <button class="joke-btn" onclick="getJoke()">Получить шутку 😈</button>
+            <p style="font-size: 0.95rem; color: #a78bfa; margin-bottom: 15px;">Нажми на кнопку, чтобы поржать от души:</p>
+            <button class="joke-btn" onclick="getJoke()">Получить порцию жесткого юмора 😈</button>
             <div class="joke-box" id="jokeBox"></div>
         </div>
 
@@ -181,7 +189,7 @@
             window.addEventListener('resize', resizeCanvas);
 
             const petals = [];
-            for (let i = 0; i < 35; i++) {
+            for (let i = 0; i < 40; i++) {
                 petals.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
@@ -219,6 +227,15 @@
             animatePetals();
         });
 
+        // Слайдер мемов
+        let currentSlide = 0;
+        function changeSlide(direction) {
+            const slides = document.querySelectorAll('.slide');
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
         function breakCookie() {
             document.getElementById('cookiePaper').style.display = 'block';
         }
@@ -228,11 +245,14 @@
             msg.style.display = msg.style.display === 'block' ? 'none' : 'block';
         }
 
+        // Пошлые и чёрные шутки
         const jokes = [
-            "Почему у саппортов в MLBB нет личной жизни? Потому что они привыкли вытаскивать всех из дерьма бесплатно.",
-            "Ты как Вергилий — приходишь, забираешь всю мотивацию и оставляешь всех в шоке.",
-            "Чёрный юмор как ноги — у кого-то есть, а у кого-то нету.",
-            "Секрет идеальных отношений: каркас безопасности в машине и ноль токсичности в катках!"
+            "Почему у саппортов в MLBB нет личной жизни? Потому что они привыкли вытаскивать всех из дерьма бесплатно, а сами остаются без внимания.",
+            "Ты как Вергилий — приходишь, требуешь больше мотивации, а потом оставляешь всех в полном шоке.",
+            "Чёрный юмор как ноги — у кого-то он есть, а у некоторых инвалидов детства нет.",
+            "Секрет идеальных отношений: каркас безопасности в машине, чтобы прижиматься крепче, и полное отсутствие AFK в постели.",
+            "Жизнь коротка, поэтому нарушай правила, зажигай по полной, а если кто-то говорит, что ты странная — пошли его в соло-катку сливать мид.",
+            "Хороший секс похож на хорошую катку в MLBB: главное — вовремя заюзать ультимейт и не слиться в первые две минуты."
         ];
 
         function getJoke() {
